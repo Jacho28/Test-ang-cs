@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl: string = "http://localhost:5241/api/users/"
+  // private apiUrl: string = "http://localhost:5241/api/users/"
 
 
-  //constructor(private http: HttpClient){}
+  // constructor(private http: HttpClient){}
 
   // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>('');
+  //   return this.http.get<User[]>(this.apiUrl);
   // }
 
 }

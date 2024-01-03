@@ -16,13 +16,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class UserListComponent implements OnInit{
-  userList: User[] = []
-  userService: UserService = inject(UserService);
+  userList: User[] = [];
+  //userService: UserService = inject(UserService);
   httpClient = inject(HttpClient);
 
 
-  constructor() {
-    console.log(this.userList);
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {

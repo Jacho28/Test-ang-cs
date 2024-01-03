@@ -13,12 +13,6 @@ import { UserService } from '../user.service';
     UserListComponent
   ],
   template: `
-  <section>
-    <form>
-      <input type="text" placeholder="Filter by name">
-      <button class="primary" type="button">Search</button>
-    </form>
-  </section>
   <section class="results">
     <app-user-list></app-user-list>
   </section>

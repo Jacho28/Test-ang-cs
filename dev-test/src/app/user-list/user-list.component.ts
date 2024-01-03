@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from '../user/user.component';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-list',
@@ -13,24 +13,25 @@ import { HttpClientModule } from '@angular/common/http';
   <app-user *ngFor="let user of userList" [user]="user"></app-user>
   `,
   styleUrl: './user-list.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class UserListComponent implements OnInit{
   userList: User[] = []
   userService: UserService = inject(UserService);
+  httpClient = inject(HttpClient);
+
 
   constructor() {
     console.log(this.userList);
   }
 
   ngOnInit(): void {
-    this.showList();
+    this.fetchUsers();
   }
-
-  showList() {
-    this.userService.getUsers().subscribe(
+  fetchUsers(): void {
+    this.httpClient.get('http://localhost:5241/api/users/').subscribe(
       {
-        next:(dataResponse) => {
+        next:(dataResponse: any) => {
           console.log(dataResponse)
           this.userList = dataResponse;
         },
@@ -38,5 +39,17 @@ export class UserListComponent implements OnInit{
       }
     );
   }
+
+  // showList(): void {
+  //   this.userService.getUsers().subscribe(
+  //     {
+  //       next:(dataResponse) => {
+  //         console.log(dataResponse)
+  //         this.userList = dataResponse;
+  //       },
+  //       error:(e) => {console.log(e)}
+  //     }
+  //   );
+  // }
 
 }

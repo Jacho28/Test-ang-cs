@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { UserListComponent } from '../user-list/user-list.component';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../user.service';
   standalone: true,
   imports: [
     CommonModule,
-    UserListComponent
+    UserListComponent,
   ],
   template: `
   <section class="results">

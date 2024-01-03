@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
 
@@ -11,10 +11,10 @@ export class UserService {
   private apiUrl: string = "http://localhost:5241/api/users/"
 
 
-  constructor(private http: HttpClient){}
+  //constructor(private http: HttpClient){}
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl);
-  }
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>('');
+  // }
 
 }
